@@ -58,7 +58,7 @@
             <div class="container-fluid">
             <!-- HEADER DESKTOP-->
            @yield('content') 
-      @include('frontend.user_dashboard.body.footer')
+      {{-- @include('frontend.user_dashboard.body.footer') --}}
 
           </div>
         </div>
