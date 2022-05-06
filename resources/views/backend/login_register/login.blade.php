@@ -11,8 +11,23 @@
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
+  <!-- Toaster CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
-
+    <style type="text/css">
+        .toast-success {
+          background-color: #51A351 !important;
+        }
+        .toast-error {
+          background-color: #BD362F !important;
+        }
+        .toast-info {
+          background-color: #2F96B4 !important;
+        }
+        .toast-warning {
+          background-color: #F89406 !important;
+        }
+        </style>
   <!-- Fontfaces CSS-->
   <link href="{{asset('backend/css/font-face.css')}}" rel="stylesheet" media="all">
   <link href="{{asset('backend/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
@@ -44,7 +59,7 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="{{asset('backend/images/icon/logo.png')}}" alt="CoolAdmin">
+                                <img src="{{asset('backend/images/icon/logo.png')}}" alt="logo">
                             </a>
                         </div>
                         <div class="login-form">
@@ -64,43 +79,36 @@
     </div>
             @endif
 
-
-
-
-                            <form method="POST" action="{{ route('admin.login') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input class="au-input au-input--full" id="email" type="email" name="email"  placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full"  id="password"  type="password" name="password" placeholder="Password">
-                                </div>
-                                <div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" id="remember_me" name="remember" >Remember Me
-                                    </label>
-                                    <label>
-                                        @if (Route::has('password.request'))
-                                        <a href="{{ route('password.request') }}">Forgotten Password?</a>
-                                        @endif
-                                    </label>
-                                </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
-                                <div class="social-login-content">
-                                    <div class="social-button">
-                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>
-                                        <button class="au-btn au-btn--block au-btn--blue2">sign in with twitter</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="register-link">
-                                <p>
-                                    Don't you have account?
-                                    <a href="{{route('register')}}">Sign Up Here</a>
-                                </p>
-                            </div>
+            <form method="POST" action="{{ route('admin.login') }}">
+                @csrf
+                <div class="form-group">
+                    <label>Admin Email Address</label>
+                    <input class="au-input au-input--full" id="email" type="email" name="email"  placeholder="Admin Email">
+                    @error('email')
+                    <span class="text-danger"> {{$message}}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Admin Password</label>
+                    <input class="au-input au-input--full"  id="password"  type="password" name="password" placeholder="Admin Password">
+                    @error('password')
+                    <span class="text-danger"> {{$message}}</span>
+                    @enderror
+                </div>
+                <div class="login-checkbox">
+                    <label>
+                        <input type="checkbox" id="remember_me" name="remember" >Remember Me
+                    </label>
+                    {{-- <label>
+                        @if (Route::has('password.request'))
+                        <a href="{{ route('password.request') }}">Forgotten Password?</a>
+                        @endif
+                    </label> --}}
+                </div>
+                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Admin Sign in</button>
+            
+            </form>
+                        
                         </div>
                     </div>
                 </div>
@@ -132,7 +140,30 @@
 
     <!-- Main JS-->
     <script src="{{asset('backend/js/main.js')}}"></script>
-
+ <!-- Toaster Javascript cdn -->
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+ <script>
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type','info') }}"
+    switch(type){
+       case 'info':
+       toastr.info(" {{ Session::get('message') }} ");
+       break;
+   
+       case 'success':
+       toastr.success(" {{ Session::get('message') }} ");
+       break;
+   
+       case 'warning':
+       toastr.warning(" {{ Session::get('message') }} ");
+       break;
+   
+       case 'error':
+       toastr.error(" {{ Session::get('message') }} ");
+       break; 
+    }
+    @endif 
+   </script>
 </body>
 
 </html>

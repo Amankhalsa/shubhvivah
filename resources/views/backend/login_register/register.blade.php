@@ -37,7 +37,8 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
+                                <img src="{{asset('backend/images/icon/logo.png')}}" alt="logo">
+
                             </a>
                         </div>
                         <div class="login-form">
@@ -46,36 +47,43 @@
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input class="au-input au-input--full" id="name" type="text" name="name"  placeholder="Username">
+                                    @error('name')
+                                    <span class="text-danger"> {{$message}}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <input class="au-input au-input--full" id="email"  type="email" name="email" placeholder="Email">
+                                    @error('email')
+                                    <span class="text-danger"> {{$message}}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input class="au-input au-input--full" id="password" type="password" name="password" placeholder="Password">
+                                    @error('password')
+                                    <span class="text-danger"> {{$message}}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Confirm Password</label>
                                     <input class="au-input au-input--full" type="password" name="password_confirmation"  placeholder="Confirm Password">
+                                    @error('password_confirmation')
+                                    <span class="text-danger"> {{$message}}</span>
+                                    @enderror
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
                                         <input type="checkbox" name="aggree">Agree the terms and policy
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
-                                <div class="social-login-content">
-                                    <div class="social-button">
-                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>
-                                        <button class="au-btn au-btn--block au-btn--blue2">register with twitter</button>
-                                    </div>
-                                </div>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Admin Register</button>
+                            
                             </form>
                             <div class="register-link">
                                 <p>
                                     Already have account?
-                                    <a href="{{ route('login') }}">Sign In</a>
+                                    <a href="{{ route('login_from') }}">Sign In</a>
                                 </p>
                             </div>
                         </div>

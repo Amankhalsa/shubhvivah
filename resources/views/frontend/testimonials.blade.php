@@ -6,6 +6,8 @@
 @section('title')
 Testimonials
 @endsection
+  
+@section('content')
 <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 breadcrumb-section">
@@ -211,4 +213,4 @@ Testimonials
   }
   </script>
   
-  
+@endsection  

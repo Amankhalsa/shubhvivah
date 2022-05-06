@@ -42,40 +42,31 @@
                                 </div>
                             </div>
                         </div>
+ @php
+
+$get_Inquiry =  App\Models\Inquiry::orderBy('name')->latest()->get();
+
+
+@endphp
                         <div class="noti__item js-item-menu">
                             <i class="zmdi zmdi-email"></i>
-                            <span class="quantity">1</span>
+                            <span class="quantity">{{count($get_Inquiry)}}</span>
                             <div class="email-dropdown js-dropdown">
                                 <div class="email__title">
-                                    <p>You have 3 New Emails</p>
+                                    <p>You have {{count($get_Inquiry)}}  Inquiry</p>
                                 </div>
+                               @foreach($get_Inquiry as $val)
                                 <div class="email__item">
                                     <div class="image img-cir img-40">
-                                        <img src="{{asset('backend/images/icon/avatar-06.jpg')}}" alt="Cynthia Harvey" />
+                                        <img src="{{asset('upload/no_image.jpg')}}" alt="Cynthia Harvey" />
                                     </div>
                                     <div class="content">
-                                        <p>Meeting about new dashboard...</p>
-                                        <span>Cynthia Harvey, 3 min ago</span>
-                                    </div>
-                                </div>
-                                <div class="email__item">
-                                    <div class="image img-cir img-40">
-                                        <img src="{{asset('backend/images/icon/avatar-05.jpg')}}" alt="Cynthia Harvey" />
-                                    </div>
-                                    <div class="content">
-                                        <p>Meeting about new dashboard...</p>
+                                        <p>{{ $val->name}}</p>
                                         <span>Cynthia Harvey, Yesterday</span>
                                     </div>
                                 </div>
-                                <div class="email__item">
-                                    <div class="image img-cir img-40">
-                                        <img src="{{asset('backend/images/icon/avatar-04.jpg')}}" alt="Cynthia Harvey" />
-                                    </div>
-                                    <div class="content">
-                                        <p>Meeting about new dashboard...</p>
-                                        <span>Cynthia Harvey, April 12,,2018</span>
-                                    </div>
-                                </div>
+                                @endforeach
+                              
                                 <div class="email__footer">
                                     <a href="#">See all emails</a>
                                 </div>
@@ -124,7 +115,7 @@
                     <div class="account-wrap">
                         <div class="account-item clearfix js-item-menu">
                             <div class="image">
-                                <img src="{{asset('backend/images/no_image.jpg')}}" alt="John Doe" />
+                                <img src="{{ asset(Auth::guard('admin')->user()->profile_photo_path) }}" alt="John Doe" />
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#"> {{ Auth::guard('admin')->user()->name }}</a>
@@ -133,7 +124,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="{{asset('backend/images/no_image.jpg')}}" alt="John Doe" />
+                                            <img src="{{ asset(Auth::guard('admin')->user()->profile_photo_path) }}" alt="John Doe" />
                                         </a>
                                     </div>
                                     <div class="content">
@@ -149,13 +140,13 @@
                                             <i class="zmdi zmdi-account"></i>My Account</a>
                                     </div>
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href="{{route('admin.password.change')}}">
                                             <i class="zmdi zmdi-settings"></i>Change Password</a>
                                     </div>
-                                    <div class="account-dropdown__item">
+                                    {{-- <div class="account-dropdown__item">
                                         <a href="#">
                                             <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="account-dropdown__footer">
                               

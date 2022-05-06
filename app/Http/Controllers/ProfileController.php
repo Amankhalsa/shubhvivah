@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Image;
 use App\Models\Admin;
 use Auth;
+use Illuminate\Support\Facades\Hash;
+
 class ProfileController extends Controller
 {
     //
@@ -22,11 +24,14 @@ class ProfileController extends Controller
             if($user){
                 return view('backend.profile.edit' ,$user);
             }
-
         }
        
   
     }
+
+
+
+
 
     // admin_update_profile
     public function admin_update_profile(Request $request){
@@ -35,7 +40,6 @@ class ProfileController extends Controller
             'email' =>'required|email',
             'profile_photo_path' =>'required|image|mimes:jpg,png,jpeg,svg,webp|max:4096',
             
-
             ]);
             $user =Admin::find(Auth::guard('admin')->id());
             $old_profile = $user->profile_photo_path;
@@ -77,5 +81,40 @@ class ProfileController extends Controller
             
         }
 
-        
+            // change password  change_password
+    public function change_password(){
+        return view('backend.profile.change_password');
+
+    }
+
+    // update_admin_password
+    public function update_admin_password(Request $request){
+        $validateData = $request->validate([
+            'oldpassword' => 'required',
+            'password' => 'required|confirmed',
+            // 'new_confirm_password' => 'same:new_password',
+        ]);
+        if(Auth::guard('admin')){
+            
+            $user =Admin::find(Auth::guard('admin')->id());
+            $hashedpassword = $user->password;
+            // dd($user,$request->all());
+            if (Hash::check($request->oldpassword,$user->password)) {
+               
+                $user->password = Hash::make($request->password);
+                $user->save();
+                Auth::logout();
+                    $notification = array(
+                'message' => 'Password Updated successfully',
+                'alert-type' => 'info'
+            );
+                return redirect()->route('login_from')->with($notification);
+    
+    
+            }else{
+            
+                return redirect()->back();
+            }
+        }
+    }
 }
