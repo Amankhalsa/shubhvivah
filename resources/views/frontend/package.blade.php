@@ -1,12 +1,9 @@
 @extends('frontend.body.home_master')
-
 @section('title')
 Package 
 @endsection
-  
 @section('content')
 <!--  start top video section -->
-
 <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 breadcrumb-section">
@@ -17,8 +14,6 @@ Package
               <h1>our packages  </h1>
               <a href="https://www.shubhvivah.us/"> back to home page </a>
             </div>
-  
-  
           </div>
         </div>
       </div>

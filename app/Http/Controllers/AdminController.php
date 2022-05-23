@@ -19,8 +19,6 @@ class AdminController extends Controller
     public function Dashboard(){
         return view('backend.index');
     }// end mehtod 
-
-
     public function Login(Request $request){
         // dd($request->all());
 
@@ -40,20 +38,11 @@ class AdminController extends Controller
         return redirect()->route('login_from')->with('error','Admin Logout Successfully');
 
     } // end mehtod 
-
-
     public function AdminRegister(){
-
         return view('backend.login_register.register');
-
     } // end mehtod 
-
-
-
     public function AdminRegisterCreate(Request $request){
-
         // dd($request->all());
-
         Admin::insert([
             'name' => $request->name,
             'email' => $request->email,
@@ -61,9 +50,7 @@ class AdminController extends Controller
             'created_at' => Carbon::now(),
 
         ]);
-
          return redirect()->route('login_from')->with('error','Admin Created Successfully');
-
     } // end mehtod 
 
 }

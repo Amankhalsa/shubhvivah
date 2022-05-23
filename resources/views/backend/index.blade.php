@@ -33,7 +33,7 @@ $get_user =  App\Models\User::orderBy('name')->latest()->get()->take(3);
                             </div>
                             <div class="text">
                                 <h2>{{count($all_user)}}</h2>
-                                <span>Total members </span>
+                                <span>Total Users </span>
                             </div>
                         </div>
                         <div class="overview-chart">
@@ -103,7 +103,7 @@ $get_user =  App\Models\User::orderBy('name')->latest()->get()->take(3);
           
             <div class="col-lg-12">
                 <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
-                    <div class="au-card-title" style="background-image:url('images/bg-title-02.jpg');">
+                    <div class="au-card-title" style="background-image:url('{{asset('backend/images/bg-title-02.jpg')}}');">
                         <div class="bg-overlay bg-overlay--blue"></div>
                         <h3>
                             <i class="zmdi zmdi-comment-text"></i> New Client user</h3>
@@ -127,8 +127,8 @@ $get_user =  App\Models\User::orderBy('name')->latest()->get()->take(3);
                                             <div class="avatar-wrap">
                                                 <div class="avatar">
                                                     
-                                                    <img src="{{asset($values->profile_photo_path)}}" alt="{{$values->name}}">
-                                                
+        <img src="{{(!empty($values->profile_photo_path)) ? asset($values->profile_photo_path):url('upload/no_image.jpg')}}  " alt="{{$values->name}}">
+                                              
                                                 </div>
                                             </div>
                                             <div class="text">

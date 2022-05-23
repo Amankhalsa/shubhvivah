@@ -16,7 +16,11 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                   
+                         <li>
+                    <a href="{{route('front.home.page')}}" target="_blank">
+                        <i class="fa fa-globe"></i>Website </a>
+                        
+                    </li>
                                 <li>
                                     <a href="{{route('admin.dashboard')}}">
                                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>

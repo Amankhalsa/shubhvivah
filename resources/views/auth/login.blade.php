@@ -69,10 +69,10 @@
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-                                <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input class="au-input au-input--full" id="email"  type="email" name="email"  placeholder="Email">
-                                    @error('email')
+             <div class="form-group">
+                                    <label>Email / Name / Phone</label>
+                                    <input class="au-input au-input--full" id="login"  type="text" name="login"  placeholder="Email / Name / Phone">
+                                    @error('login')
                                     <span class="text-danger"> {{$message}}</span>
                                     @enderror
                                 </div>

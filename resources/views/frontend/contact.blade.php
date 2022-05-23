@@ -1,9 +1,7 @@
 @extends('frontend.body.home_master')
-
 @section('title')
 Contact 
 @endsection
-  
 @section('content')
 <!--  start top video section -->
 

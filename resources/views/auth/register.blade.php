@@ -71,23 +71,25 @@
                                     @enderror
                                 </div>
                                 {{-- phone  --}}
-                                {{-- date of birth  --}}
-                                <div class="form-group">
-                                    {{-- <label>Date of Birth</label> --}}
+                                {{-- start date of birth  --}}
+                              {{--   <div class="form-group">
+                                    {{-- <label>Date of Birth</label> 
                                     <input class="au-input au-input--full" id="dob"  type="date" name="dob" placeholder="MM/DD/YYYY"
                                     onfocus="(this.type='date')">
                                     @error('dob')
                                     <span class="text-danger"> {{$message}}</span>
                                     @enderror
-                                </div>
-                                {{-- date of birth  --}}
+                                </div> --}}
+                                {{-- end date of birth --}}
+                                
                                 <div class="form-group">
-                                    {{-- <label>Password</label> --}}
+                                  {{--  <label>Password</label>  --}}
                                     <input class="au-input au-input--full" id="password" type="password" name="password" placeholder="Password">
                                     @error('password')
                                     <span class="text-danger"> {{$message}}</span>
                                     @enderror
-                                </div>
+                                </div>  
+                                
                                 <div class="form-group">
                                     {{-- <label>Confirm Password</label> --}}
                                     <input class="au-input au-input--full" type="password" name="password_confirmation"  placeholder="Confirm Password">
@@ -95,6 +97,7 @@
                                     <span class="text-danger"> {{$message}}</span>
                                     @enderror
                                 </div>
+                              {{--    Country commented 
                                 <div class="form-group">
                                 
                                     <select name="country" id="select" class="form-control">
@@ -107,7 +110,7 @@
                                     <span class="text-danger"> {{$message}}</span>
                                     @enderror
                                   
-                                </div>
+                                </div>  --}}
                                 {{-- <div class="login-checkbox">
                                     <label>
                                         <input type="checkbox" name="aggree">Agree the terms and policy

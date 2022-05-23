@@ -1,9 +1,7 @@
 @extends('frontend.body.home_master')
-
 @section('title')
 Shubh Vivah 
 @endsection
-  
 @section('content')
 <div class="container-fluid">
     <div class="row">

@@ -5,7 +5,9 @@ Profile View
 @endsection
 
 @section('content')
+@php
 
+@endphp
 
 <div class="row">
     <div class="container">
@@ -34,17 +36,23 @@ Profile View
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
-                      <img src="http://localhost/5_flipmart/jetstream/public/upload/product/thambnail/1728756388711448.jpeg" class="img-fluid" alt="slide-1">
+                      <img src="{{(!empty($view_users->profile_photo_path)) ? asset($view_users->profile_photo_path):asset('upload/no_image.jpg')}}" class="img-fluid" alt="slide-1">
                      
                     </div>
-                                            <div class="carousel-item">
-                      <img src="http://localhost/5_flipmart/jetstream/public/upload/product/multi_images/1729713565979041.jpeg" class="img-fluid" alt="slide-2">
-                      
-                    </div>
-                                            <div class="carousel-item">
-                      <img src="http://localhost/5_flipmart/jetstream/public/upload/product/multi_images/1729713544650376.jpeg" class="img-fluid" alt="slide-2">
-                      
-                    </div>
+                    @foreach($multi_images as $value)
+                    @if($value->photo_name)
+                      <div class="carousel-item">
+                      <img src="{{asset($value->photo_name)}}" class="img-fluid" alt="slide-2">
+                      </div>
+                      @else
+                          <div class="carousel-item">
+                      <img src="{{asset('upload/no_image.jpg')}}" class="img-fluid" alt="slide-2">
+                      </div>
+                      @endif
+                      @endforeach
+
+
+                
                                         
                   </div>
                   <!-- Controls -->
@@ -96,8 +104,24 @@ Profile View
                         <h6 class="mb-0">
                           
                           
-                          Address</h6>
+                          Bio</h6>
                         <span class="text-secondary">{{$view_users->address}}</span>
+                      </li>
+                      
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                        <h6 class="mb-0">
+                          
+                          
+                          	Work detail</h6>
+                        <span class="text-secondary">
+                            
+                            @if($view_users->work_detail)
+                            {{$view_users->work_detail}}
+                            @else
+                            
+                                                        <span class="badge badge-pill badge-warning">NA</span>
+                                                        @endif
+                            </span>
                       </li>
                      
                     </ul>
@@ -296,8 +320,8 @@ Profile View
                   <div class="col-sm-3 text-secondary">
                 
 
-                    @if($view_users->Diet)
-                    {{$view_users->Diet}}
+                    @if($view_users->diet)
+                    {{$view_users->diet}}
                     @else
                     <span class="badge badge-pill badge-warning">NA</span>
 

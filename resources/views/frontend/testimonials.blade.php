@@ -1,12 +1,7 @@
-
-
-
 @extends('frontend.body.home_master')
-
 @section('title')
 Testimonials
 @endsection
-  
 @section('content')
 <div class="container-fluid">
     <div class="row">

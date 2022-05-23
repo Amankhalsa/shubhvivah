@@ -8,7 +8,7 @@
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
                 <li>
-                    <a href="{{route('front.home.page')}}">
+                    <a href="{{route('front.home.page')}}" target="_blank">
                         <i class="fa fa-globe"></i>Website </a>
                         
                     </li>
